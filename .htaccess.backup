@@ -1,0 +1,36 @@
+# DRIMS Security Configuration
+# Prevent directory listing
+Options -Indexes
+
+# Protect sensitive files
+<FilesMatch "\.(env|sql|log|md|txt|git|gitignore)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Enable HTTPS redirect (uncomment after SSL is configured)
+# RewriteEngine On
+# RewriteCond %{HTTPS} off
+# RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Prevent access to hidden files
+<FilesMatch "^\.">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# PHP security settings - SIMPLIFIED FOR WINDOWS
+# php_flag display_errors On
+# php_flag log_errors On
+
+# Increase upload limits (adjust as needed)
+# php_value upload_max_filesize 10M
+# php_value post_max_size 10M
+# php_value max_execution_time 300
+# php_value max_input_time 300
+
+# Prevent access to uploads directory PHP execution
+<Directory "uploads">
+    php_flag engine off
+    Options -Indexes
+</Directory>
