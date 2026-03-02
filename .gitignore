@@ -1,0 +1,17 @@
+# Environment files
+.env
+
+# Logs
+logs/
+*.log
+
+# Uploads
+uploads/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
